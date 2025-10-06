@@ -34,4 +34,5 @@ test.only('Page global fixture', async ({ page }) => {
     //sectio5 18-assertions for selected radio btns and checkbox
     expect(userRadioBtn).toBeChecked();
     console.log(await userRadioBtn.isChecked());
+    await page.pause();
 });
