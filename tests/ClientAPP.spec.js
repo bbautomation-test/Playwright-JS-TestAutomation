@@ -22,6 +22,7 @@ test.only('Page global fixture', async ({ page }) => {
     const dropdown = page.locator("select.form-control");
     const userRadioBtn = page.locator(".radiotextsty").last();
     const okayPopupBtn = page.locator("#okayBtn");
+    const termCheckBox= page.locator("#terms");
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
     await userName.fill("rahulshettyacademy");
     await passWord.fill("learning");
@@ -32,7 +33,15 @@ test.only('Page global fixture', async ({ page }) => {
     await okayPopupBtn.click();
     await signInCTA.click();
     //sectio5 18-assertions for selected radio btns and checkbox
-    expect(userRadioBtn).toBeChecked();
+    await expect(userRadioBtn).toBeChecked();
     console.log(await userRadioBtn.isChecked());
-   
+    await termCheckBox.check();
+    await expect(termCheckBox).toBeChecked();
+    await termCheckBox.uncheck();
+    await expect(termCheckBox).not.
+    
+    toBeChecked();
+    expect(await termCheckBox.isChecked()).toBeFalsy();
+
+       
 });
